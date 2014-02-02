@@ -22,7 +22,7 @@ $to_update->{name} = 'new name';
 $to_update->{img} = 'new image';
 
 # Send update request for item
-request POST '/ents/' . $to_update->{id},
+request PUT '/ents/' . $to_update->{id},
         Content_Type => 'application/json',
         Content => to_json($to_update);
 

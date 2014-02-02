@@ -71,8 +71,8 @@ sub create :POST Args(0) {
 }
  
 # Update an existing item
-# POST /ents/:id
-sub update :POST Args(1) {
+# PUT /ents/:id
+sub update :PUT Args(1) {
   my ( $self, $c, $id ) = @_;
   my $data = $c->req->body_data;
  
