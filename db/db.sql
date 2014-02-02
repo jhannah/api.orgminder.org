@@ -1,5 +1,5 @@
 
-create table entity (
+create table ents (
    id INTEGER PRIMARY KEY,
    type TEXT,      -- person, chair, set, ... 
    name TEXT,
@@ -30,10 +30,10 @@ From:
 
     create table trees ( 
       id        integer primary key, 
-      owner_id  integer references entity(id),
+      owner_id  integer references ents(id),
       tree_id   integer,
       parent_id integer references tree(id), 
-      entity_id integer, 
+      ent_id    integer, 
       path      text        -- materialized path 
     ); 
       
@@ -58,10 +58,10 @@ From:
 
 /* 
     -- example 
-    insert into trees (id, parent_id, entity_id) values (1, NULL, 'parent'); 
-    insert into trees (id, parent_id, entity_id) values (NULL, 1, 'son'); 
-    insert into trees (id, parent_id, entity_id) values (NULL, 1, 'daughter'); 
-    insert into trees (id, parent_id, entity_id) values (NULL, 2, 'grandchild'); 
+    insert into trees (id, parent_id, ent_id) values (1, NULL, 'parent'); 
+    insert into trees (id, parent_id, ent_id) values (NULL, 1, 'son'); 
+    insert into trees (id, parent_id, ent_id) values (NULL, 1, 'daughter'); 
+    insert into trees (id, parent_id, ent_id) values (NULL, 2, 'grandchild'); 
     select * from trees; 
 
     -- find all root nodes 
